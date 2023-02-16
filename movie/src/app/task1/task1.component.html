@@ -1,0 +1,15 @@
+
+  <input type="text" [(ngModel)]="movieName" />
+  <button (click)="getMovieInfo()">Get movie info</button>
+<!--   
+  <div *ngIf="countryInfo$ | async as contr">
+    <p>{{contr.name}}</p>
+</div> -->
+
+ 
+
+  <div *ngIf="movieInfo$ | async as movieInfo">
+    <p>Released {{movieInfo.yearReleased}}</p>
+    <p>Actors: {{movieInfo.actorNames}}</p>
+    <p>countries: {{movieInfo.currencies}}</p>
+  </div>

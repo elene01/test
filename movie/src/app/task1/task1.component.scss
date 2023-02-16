@@ -1,0 +1,49 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  input {
+    width: 60%;
+    margin-top: 50px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 24px;
+  }
+  button {
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+    border: none;
+    &:hover {
+      background-color: rgb(12, 101, 98);
+      color: white;
+    }
+  }
+}
+.aboutMovie {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 20%;
+  margin-left: 40%;
+  align-items: center;
+  border-radius: 8px;
+  color: white;
+  margin-top: 40px;
+  font-size: 24px;
+  background-color: rgb(53, 126, 137);
+  text-align: center;
+  img{
+    width: 40%;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+  .countrie {
+    display: flex;
+    flex-direction: row;
+  }
+}

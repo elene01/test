@@ -2,12 +2,7 @@ export interface Movie  {
     yearReleased : number
     actorNames : string
     countries: string[]
-    currencies: any
+    currencies: any,
+    title: string
    
 }
-export interface Currency {
-    name: string[];
-
-
-
-  }

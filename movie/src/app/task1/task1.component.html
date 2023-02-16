@@ -1,15 +1,16 @@
+<div class="input">
+<input type="text" [(ngModel)]="movieName" />
+<button (click)="getMovieInfo()">Get movie info</button>
+</div>
 
-  <input type="text" [(ngModel)]="movieName" />
-  <button (click)="getMovieInfo()">Get movie info</button>
-<!--   
-  <div *ngIf="countryInfo$ | async as contr">
-    <p>{{contr.name}}</p>
-</div> -->
-
- 
-
-  <div *ngIf="movieInfo$ | async as movieInfo">
-    <p>Released {{movieInfo.yearReleased}}</p>
-    <p>Actors: {{movieInfo.actorNames}}</p>
-    <p>countries: {{movieInfo.currencies}}</p>
-  </div>
+<div class="aboutMovie" *ngIf="movieInfo$ | async as movieInfo">
+  <p>Movie Name: {{ movieInfo.title }}</p>
+  <p>Released {{ movieInfo.yearReleased }} years ago</p>
+  <p>Actors: {{ movieInfo.actorNames }}</p>
+  <p>Countries: {{ movieInfo.countries }}</p>
+  <p>currencies:</p> 
+  <div class="countrie" *ngFor="let countrie of movieInfo.currencies">
+  <p> {{countrie.name}}</p>
+  <img src="{{countrie.flags}}">
+</div>
+</div>

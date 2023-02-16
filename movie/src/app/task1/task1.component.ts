@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
-import { Observable, filter, forkJoin, map } from 'rxjs'
+import { Observable, forkJoin, map, switchMap } from 'rxjs'
 import { Movie } from '../movie.model'
 import { HttpClient } from '@angular/common/http'
-import { Currency } from '../movie.model'
 
+import { ApiService } from '../services/api.service'
 
 @Component({
   selector: 'app-task1',
@@ -11,7 +11,7 @@ import { Currency } from '../movie.model'
   styleUrls: ['./task1.component.scss'],
 })
 export class Task1Component {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private apiService: ApiService) {}
 
   movieName: string = ''
   movieInfo$: Observable<Movie> | undefined
@@ -19,41 +19,41 @@ export class Task1Component {
   countryInfo$: Observable<{ name: string; symbol: string }> | undefined
 
   getMovieInfo() {
-    this.movieInfo$ = this.http
-      .get(`http://www.omdbapi.com/?t=${this.movieName}&apikey=abf03079`)
-      .pipe(
-        map((data: any) => {
-          let aboutMovie: Movie
-          aboutMovie = {
-            yearReleased: new Date().getFullYear() - parseInt(data.Year),
-            actorNames: data.Actors.split(',')
-              .map((actor: any) => actor.trim().split(' ')[0])
-              .join(', '),
-            countries: data.Country.split(','),
-            currencies : []
-          }
-          const currencyRequests = aboutMovie.countries.map((country: string) => {
-            return this.http
-              .get(`https://restcountries.com/v3.1/name/${country}`)
-          });
-          forkJoin(currencyRequests).subscribe((currencyResponses: any) => {
-            currencyResponses.map((countryData: any) => {
-              const currency = {
-                name: Object.keys(countryData[0].currencies)
-              };
-              console.log(currency.name)
-              aboutMovie.currencies.push(currency);
-            });
-          });
-  
-
-          return aboutMovie;
+    this.movieInfo$ = this.apiService.getMovieData(this.movieName).pipe(
+      switchMap((data: any) => {
+        const aboutMovie: Movie = {
+          title: data.Title,
+          yearReleased: new Date().getFullYear() - parseInt(data.Year),
+          actorNames: data.Actors.split(',')
+            .map((actor: any) => actor.trim().split(' ')[0])
+            .join(', '),
+          countries: data.Country.split(',').map((e: string) => e.trim()),
+          currencies: [],
+        }
+        const currencyRequests = aboutMovie.countries.map((country: string) => {
+          return this.apiService.getCountrieData(country)
         })
-      );
-    this.movieInfo$.subscribe((x)=>console.log(x))
-}
-   
+
+        return forkJoin(currencyRequests).pipe(
+          map((currencyResponses: any) => {
+            aboutMovie.currencies = currencyResponses.map(
+              (countryData: any) => {
+                console.log(countryData)
+                return {
+                  name: Object.keys(countryData[0].currencies),
+                  flags: countryData[0].flags.png,
+                }
+              },
+            )
+
+            return aboutMovie
+          }),
+        )
+      }),
+    )
+    this.movieInfo$.subscribe((x) => console.log(x))
   }
+}
 
 function ngOnInit() {
   throw new Error('Function not implemented.')

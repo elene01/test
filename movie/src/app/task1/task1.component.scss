@@ -39,11 +39,66 @@
   img{
     width: 40%;
     height: 40px;
-    margin-top: 15px;
     margin-left: 15px;
   }
   .countrie {
     display: flex;
     flex-direction: row;
   }
+  button {
+    padding: 8px 13px;
+    border-radius: 3px;
+    background-color: rgb(0, 157, 115);
+    font-size: 16px;
+    align-self: flex-end;
+    border: none;
+    color: white;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    &:hover {
+      background-color: rgb(1, 181, 133);
+    }
+  }
+}
+.movie {
+  display: flex;
+  flex-direction: row;
+}
+.addList {
+  color: white;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(53, 126, 137);
+  height: 400px;
+  width: 30%;
+  border-radius: 8px;
+  margin-left:100px;
+  margin-top: 40px;
+  p{
+    font-size: 26px;
+    margin-top: 10px;
+  }
+textarea {
+  width: 80%;
+  height: 150px;
+  margin-top: 5px;
+
+}
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(0, 157, 115);
+  border: none;
+  color: white;
+  &:hover {
+    background-color: rgb(1, 181, 133);
+  }
+}
+ngb-rating{
+  font-size: 30px;
+  color: yellow;
+  margin-top: -15px;
+}
 }

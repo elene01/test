@@ -1,9 +1,10 @@
 import { Component } from '@angular/core'
 import { Observable, forkJoin, map, switchMap } from 'rxjs'
-import { Movie } from '../movie.model'
+import {  List, Movie } from '../movie.model'
 import { HttpClient } from '@angular/common/http'
 
 import { ApiService } from '../services/api.service'
+import { FormControl, isFormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-task1',
@@ -17,6 +18,30 @@ export class Task1Component {
   movieInfo$: Observable<Movie> | undefined
   movieCountry: string = ''
   countryInfo$: Observable<{ name: string; symbol: string }> | undefined
+  showForm: boolean = false
+  ratingcontrol = new FormControl(0)
+  movieList$: Observable<any> = this.apiService.getListData()
+  comment: string = ''
+  toAdd : List | undefined
+  ngOnInit() {}
+
+  addToList(movie: any) {
+    this.toAdd = {
+      comment: this.comment,
+      rate: this.ratingcontrol.value,
+      movieInfo: movie
+    }
+
+ this.apiService.addData(this.toAdd).subscribe((c)=>console.log(c))
+ this.movieList$ = this.apiService.getListData()
+  }
+
+  addComment() {
+    this.showForm = true
+  }
+  ratingValue() {
+    this.ratingcontrol.value
+  }
 
   getMovieInfo() {
     this.movieInfo$ = this.apiService.getMovieData(this.movieName).pipe(
@@ -38,7 +63,6 @@ export class Task1Component {
           map((currencyResponses: any) => {
             aboutMovie.currencies = currencyResponses.map(
               (countryData: any) => {
-                console.log(countryData)
                 return {
                   name: Object.keys(countryData[0].currencies),
                   flags: countryData[0].flags.png,
@@ -51,7 +75,6 @@ export class Task1Component {
         )
       }),
     )
-    this.movieInfo$.subscribe((x) => console.log(x))
   }
 }
 

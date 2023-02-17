@@ -1,0 +1,11 @@
+<div *ngFor="let item of movieList$ | async">
+<div class="container">
+      <p>{{ item.movieInfo.title}}</p>
+      <p>Movie rate is: {{ item.rate}}</p>
+      <p>Your comments is:</p>
+      <p>{{ item.comment}}</p>
+
+    
+      <button [routerLink]="[item.id, item]"  [queryParams]="{ item}">See details</button>
+    </div>
+</div>

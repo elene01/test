@@ -1,0 +1,60 @@
+{
+  "movies": [
+    {
+      "comment": "comment",
+      "rate": 4,
+      "movieInfo": {
+        "title": "Titanic",
+        "yearReleased": 26,
+        "actorNames": "Leonardo, Kate, Billy",
+        "countries": [
+          "United States",
+          "Mexico"
+        ],
+        "currencies": [
+          {
+            "name": [
+              "USD"
+            ],
+            "flags": "https://flagcdn.com/w320/vi.png"
+          },
+          {
+            "name": [
+              "MXN"
+            ],
+            "flags": "https://flagcdn.com/w320/mx.png"
+          }
+        ]
+      },
+      "id": 1
+    },
+    {
+      "comment": "ww",
+      "rate": 5,
+      "movieInfo": {
+        "title": "Titanic",
+        "yearReleased": 26,
+        "actorNames": "Leonardo, Kate, Billy",
+        "countries": [
+          "United States",
+          "Mexico"
+        ],
+        "currencies": [
+          {
+            "name": [
+              "USD"
+            ],
+            "flags": "https://flagcdn.com/w320/vi.png"
+          },
+          {
+            "name": [
+              "MXN"
+            ],
+            "flags": "https://flagcdn.com/w320/mx.png"
+          }
+        ]
+      },
+      "id": 2
+    }
+  ]
+}

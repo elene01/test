@@ -2,6 +2,8 @@
 <input type="text" [(ngModel)]="movieName" />
 <button (click)="getMovieInfo()">Get movie info</button>
 </div>
+<div class="movie">
+
 
 <div class="aboutMovie" *ngIf="movieInfo$ | async as movieInfo">
   <p>Movie Name: {{ movieInfo.title }}</p>
@@ -13,4 +15,20 @@
   <p> {{countrie.name}}</p>
   <img src="{{countrie.flags}}">
 </div>
+<button (click)="addComment()" >Add To List</button>
 </div>
+<div class="addList" *ngIf="showForm" >
+  <p>Rate Movie:</p>
+  <ngb-rating [max]="5" (click)="ratingValue()" [formControl]="ratingcontrol" ></ngb-rating>
+  <p>enter commentar:</p>
+  <textarea [(ngModel)]="comment"></textarea>
+  <button *ngIf="movieInfo$ | async as movieInfo"(click)="addToList(movieInfo)" routerLink="List">ADD</button>
+
+</div>
+
+</div>
+
+
+
+
+

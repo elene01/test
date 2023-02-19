@@ -1,34 +1,47 @@
+<li  routerLink="List">Favorite Movie</li>
+<li  routerLink="Task2">Task 2</li>
+
 <div class="input">
-<input type="text" [(ngModel)]="movieName" />
-<button (click)="getMovieInfo()">Get movie info</button>
+  <input type="text" [(ngModel)]="movieName" />
+  <button (click)="getMovieInfo()">Get movie info</button>
 </div>
 <div class="movie">
+  <div
+    class="aboutMovie"
+    *ngIf="movieInfo$ | async as movieInfo"
+    [ngStyle]="{ 'background-image': 'url(' + movieInfo.poster + ')' }"
+  >
+    <div class="text">
+      <p>Movie Name: {{ movieInfo.title }}</p>
+      <p>Released {{ movieInfo.yearReleased }} years ago</p>
+      <p>Actors: {{ movieInfo.actorNames }}</p>
+      <p>Countries: {{ movieInfo.countries }}</p>
+      <p>currencies:</p>
+      <div class="countrie" *ngFor="let countrie of movieInfo.currencies">
+        <p>{{ countrie.name }}</p>
+        <img src="{{ countrie.flags }}" />
+      </div>
+      <button (click)="addComment()">Add To List</button>
+    </div>
+  </div>
 
 
-<div class="aboutMovie" *ngIf="movieInfo$ | async as movieInfo">
-  <p>Movie Name: {{ movieInfo.title }}</p>
-  <p>Released {{ movieInfo.yearReleased }} years ago</p>
-  <p>Actors: {{ movieInfo.actorNames }}</p>
-  <p>Countries: {{ movieInfo.countries }}</p>
-  <p>currencies:</p> 
-  <div class="countrie" *ngFor="let countrie of movieInfo.currencies">
-  <p> {{countrie.name}}</p>
-  <img src="{{countrie.flags}}">
+
+  <div class="addList" *ngIf="showForm">
+    <p>Rate Movie:</p>
+    <ngb-rating
+      [max]="5"
+      (click)="ratingValue()"
+      [formControl]="ratingcontrol"
+    ></ngb-rating>
+    <p>enter commentar:</p>
+    <textarea [(ngModel)]="comment"></textarea>
+    <button
+      *ngIf="movieInfo$ | async as movieInfo"
+      (click)="addToList(movieInfo)"
+      routerLink="List"
+    >
+      ADD
+    </button>
+  </div>
 </div>
-<button (click)="addComment()" >Add To List</button>
-</div>
-<div class="addList" *ngIf="showForm" >
-  <p>Rate Movie:</p>
-  <ngb-rating [max]="5" (click)="ratingValue()" [formControl]="ratingcontrol" ></ngb-rating>
-  <p>enter commentar:</p>
-  <textarea [(ngModel)]="comment"></textarea>
-  <button *ngIf="movieInfo$ | async as movieInfo"(click)="addToList(movieInfo)" routerLink="List">ADD</button>
-
-</div>
-
-</div>
-
-
-
-
-

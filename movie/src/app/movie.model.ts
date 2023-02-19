@@ -4,6 +4,7 @@ export interface Movie {
   countries: string[]
   currencies: any
   title: string
+  poster: string
 }
 export interface List {
   rate: number | null
@@ -15,5 +16,7 @@ export interface List {
     countries: string[]
     currencies: any
     title: string
+
   }
+
 }

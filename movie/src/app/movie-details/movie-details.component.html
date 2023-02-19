@@ -1,14 +1,28 @@
-<p>movie-details works!</p>
+<li (click)="goBack()">Back</li>
 
-<div *ngIf="selectedMovie " >
-    <p>Movie Name: {{ selectedMovie }}</p>
-    <!-- <p>Released {{ selectedMovie.yearReleased }} years ago</p>
-    <p>Actors: {{ selectedMovie.actorNames }}</p>
-    <p>Countries: {{ selectedMovie.countries }}</p>
-    <p>currencies:</p>  -->
-    <!-- <div class="countrie" *ngFor="let countrie of selectedMovie.currencies">
-    <p> {{countrie.name}}</p>
-    <img src="{{countrie.flags}}">
-  </div> -->
-
-    </div>
+<div class="container" *ngIf="selectedMovie$ | async as selectedMovie">
+  <img class="poster" src="{{ selectedMovie.movieInfo.poster }}" />
+  <div class="text">
+    <p>Movie Name: {{ selectedMovie.movieInfo.title }}</p>
+    <p>Released {{ selectedMovie.movieInfo.yearReleased }} years ago</p>
+    <p>Actors: {{ selectedMovie.movieInfo.actorNames }}</p>
+    <p>Countries: {{ selectedMovie.movieInfo.countries }}</p>
+    <p>Your Rate: {{ selectedMovie.rate }}</p>
+    <p>Your Comment Is:</p>
+    <p *ngIf="!editText">{{ selectedMovie.comment }}</p>
+    <textarea *ngIf="editText" #textarea>{{ selectedMovie.comment }}</textarea>
+  </div>
+  <button class="edit" (click)="editComment(selectedMovie.id)" *ngIf="editText">
+    Edit
+  </button>
+  <button class="delete" (click)="cancelEdit()" *ngIf="editText">Cancel</button>
+  <button class="edit" (click)="edit()" *ngIf="!editText">Edit</button>
+  <button
+    class="delete"
+    (click)="deleteMovie(selectedMovie.id)"
+    routerLink=""
+    *ngIf="!editText"
+  >
+    Delete
+  </button>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { Observable, forkJoin, map, switchMap } from 'rxjs'
-import {  List, Movie } from '../movie.model'
+import { List, Movie } from '../movie.model'
 import { HttpClient } from '@angular/common/http'
 
 import { ApiService } from '../services/api.service'
@@ -22,18 +22,18 @@ export class Task1Component {
   ratingcontrol = new FormControl(0)
   movieList$: Observable<any> = this.apiService.getListData()
   comment: string = ''
-  toAdd : List | undefined
+  toAdd: List | undefined
   ngOnInit() {}
 
   addToList(movie: any) {
     this.toAdd = {
       comment: this.comment,
       rate: this.ratingcontrol.value,
-      movieInfo: movie
+      movieInfo: movie,
     }
 
- this.apiService.addData(this.toAdd).subscribe((c)=>console.log(c))
- this.movieList$ = this.apiService.getListData()
+    this.apiService.addData(this.toAdd).subscribe((c) => console.log(c))
+    this.movieList$ = this.apiService.getListData()
   }
 
   addComment() {
@@ -46,12 +46,14 @@ export class Task1Component {
   getMovieInfo() {
     this.movieInfo$ = this.apiService.getMovieData(this.movieName).pipe(
       switchMap((data: any) => {
+        console.log(data)
         const aboutMovie: Movie = {
           title: data.Title,
           yearReleased: new Date().getFullYear() - parseInt(data.Year),
           actorNames: data.Actors.split(',')
             .map((actor: any) => actor.trim().split(' ')[0])
             .join(', '),
+          poster: data.Poster,
           countries: data.Country.split(',').map((e: string) => e.trim()),
           currencies: [],
         }

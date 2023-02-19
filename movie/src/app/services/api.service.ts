@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { List } from '../movie.model';
 
 @Injectable({ providedIn: 'root' })
@@ -19,5 +19,11 @@ export class ApiService {
   }
   addData(body:List){
     return this.http.post(`http://localhost:3000/movies`,body)
+  }
+  edditData(id:string,body:any){
+    return this.http.patch(`http://localhost:3000/movies/${id}`,body)
+  }
+  deleteData(id:string){
+    return this.http.delete(`http://localhost:3000/movies/${id}`)
   }
 }

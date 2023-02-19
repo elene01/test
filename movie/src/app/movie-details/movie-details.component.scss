@@ -1,0 +1,58 @@
+.container {
+  background-color: rgb(53, 126, 137);
+  border-radius: 8px;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: row;
+  .poster {
+    width: 40%;
+    height: 500px;
+    size: cover;
+    margin: 50px;
+    border-radius: 8px;
+  }
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    color: white;
+    font-size: 24px;
+    width: 60%;
+    p{
+      height: auto;
+    }
+  }
+}
+button {
+  height: 50px;
+  width: 150px;
+  font-size: 24px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  align-self: flex-end;
+  margin-bottom: 40px;
+}
+.edit {
+  background-color: rgb(211, 154, 50);
+  margin-right: 20px;
+  &:hover {
+    background-color: rgb(221, 165, 61);
+  }
+}
+.delete {
+  background-color: rgb(175, 18, 18);
+  &:hover {
+    background-color: rgb(205, 34, 34);
+  }
+}
+li {
+  margin: 30px;
+  width: 4%;
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}

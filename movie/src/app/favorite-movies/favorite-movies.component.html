@@ -1,11 +1,16 @@
+<li routerLink="">Back</li>
 <div *ngFor="let item of movieList$ | async">
-<div class="container">
+
+  <div class="container">
+    <img src="{{item.movieInfo.poster}}">
+<div>
       <p>{{ item.movieInfo.title}}</p>
       <p>Movie rate is: {{ item.rate}}</p>
       <p>Your comments is:</p>
       <p>{{ item.comment}}</p>
 
     
-      <button [routerLink]="[item.id, item]"  [queryParams]="{ item}">See details</button>
+      <button [routerLink]="[item.id]" >See details</button>
     </div>
+  </div>
 </div>

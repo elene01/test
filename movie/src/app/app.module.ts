@@ -11,6 +11,7 @@ import {  ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { Task2Component } from './task2/task2.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     Task1Component,
     FavoriteMoviesComponent,
     MovieDetailsComponent,
+    Task2Component,
   ],
   imports: [
     ReactiveFormsModule,

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { Task1Component } from './task1/task1.component'
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component'
 import { MovieDetailsComponent } from './movie-details/movie-details.component'
+import { Task2Component } from './task2/task2.component'
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'List/:id',
     component: MovieDetailsComponent,
+  },
+  {
+    path: 'Task2',
+    component: Task2Component,
   },
 ]
 

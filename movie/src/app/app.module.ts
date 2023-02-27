@@ -12,6 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { Task2Component } from './task2/task2.component';
+import { AddMovieComponent } from './add-movie/add-movie.component';
+import { MyMoviesComponent } from './my-movies/my-movies.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { Task2Component } from './task2/task2.component';
     FavoriteMoviesComponent,
     MovieDetailsComponent,
     Task2Component,
+    AddMovieComponent,
+    MyMoviesComponent,
   ],
   imports: [
     ReactiveFormsModule,

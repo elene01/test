@@ -1,0 +1,132 @@
+<li routerLink="">Back</li>
+
+<div class="container">
+  <div>
+    <h1><i>Add Your Movie</i></h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Name:
+      <br />
+      <input type="text" formControlName="name" />
+    </label>
+    <div *ngIf="form.controls['name'].errors && isSubmitted">
+      <div *ngIf="form.controls['name'].errors['required']">
+        name is required
+      </div>
+      <div *ngIf="form.controls['name'].errors['minlength']">
+        name min length is 3
+      </div>
+      <div *ngIf="form.controls['name'].errors['maxlength']">
+        name max length is 20
+      </div>
+    </div>
+    <label>
+      Select Country
+      <div formArray="country">
+        <div *ngFor="let selection of form.controls.country.controls">
+          <select
+            [formControl]="selection"
+            *ngIf="contries | async as singleCountry"
+          >
+            <option *ngFor="let cont of singleCountry" [value]="cont">
+              {{ cont }}
+            </option>
+          </select>
+        </div>
+        <button type="button" (click)="contryControl()">+</button>
+      </div>
+      <div *ngIf="form.controls['country'].errors && isSubmitted">
+        <div *ngIf="form.controls['country'].errors['required']">
+          contry is required
+        </div>
+      </div>
+    </label>
+    <label>
+      Premier Event Place:
+      <br />
+      <input type="text" formControlName="place" />
+    </label>
+    <label>
+      Release Date:
+      <br />
+      <input type="date" id="date" formControlName="date" />
+    </label>
+    <div *ngIf="form.controls['date'].errors && isSubmitted">
+      <div *ngIf="form.controls['date'].errors['invalidDate']">
+        date is not valid
+      </div>
+    </div>
+
+    <label>
+      Genre
+      <br />
+    </label>
+    <div class="genre">
+      <label>
+        <input type="checkbox" name="genre" formControlName="Action" />
+        Action
+      </label>
+
+      <label>
+        <input type="checkbox" name="genre" formControlName="Comedy" />
+        Comedy
+      </label>
+      <label>
+        <input type="checkbox" name="genre" formControlName="Drama" />
+        Drama
+      </label>
+      <label>
+        <input type="checkbox" name="genre" formControlName="History" />
+        History
+      </label>
+
+      <label>
+        <input type="checkbox" name="genre" formControlName="Documentary" />
+        Documentary
+      </label>
+
+      
+      <label>
+        <input type="checkbox" name="genre" formControlName="Animation" />
+        Animation
+      </label>
+    </div>
+    <label>
+      <input
+        type="radio"
+        name="type"
+        [value]="type.Movie"
+        formControlName="type"
+        (click)="typeMovie()"
+      />
+      Movie
+    </label>
+
+    <label *ngIf="typeIsMovie">
+      Minutes
+      <br />
+      <input type="number" formControlName="movieMinutes" />
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        name="type"
+        [value]="type.TvShow"
+        formControlName="type"
+        (click)="typeSerial()"
+      />
+      Tv-Show
+    </label>
+    <label *ngIf="typeIsTvShow">
+      Number of series:
+      <br />
+      <input type="number" formControlName="seriesNumber" />
+    </label>
+
+    <ngb-rating [max]="5" formControlName="rate"></ngb-rating>
+    <button type="submit">Add Movie</button>
+  </form>
+</div>

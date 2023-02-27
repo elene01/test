@@ -117,12 +117,16 @@
     margin-top: -15px;
   }
 }
-li {
-  margin: 30px;
-  width: 8.5%;
-  list-style: none;
-  border-bottom: 1px solid black;
-  padding: 10px 15px;
-  font-size: 20px;
-  cursor: pointer;
+.navigate{
+  display: flex;
+  flex-direction: row;
+  li {
+    margin: 30px;
+    width: auto;
+    list-style: none;
+    border-bottom: 1px solid black;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
 }

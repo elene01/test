@@ -1,0 +1,55 @@
+div {
+  background-color: rgb(53, 126, 137);
+  margin-top: 60px;
+  width: 30%;
+  margin-left: 20%;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin-bottom: 10px;
+  gap: 350px;
+  align-items: center;
+  ul {
+    li {
+      list-style: none;
+      width: 100%;
+    }
+  }
+  button {
+    height: 50px;
+    width: 150px;
+    font-size: 24px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    align-self: center;
+    margin-bottom: 40px;
+  }
+  .edit {
+    background-color: rgb(211, 154, 50);
+    margin-right: 20px;
+    &:hover {
+      background-color: rgb(221, 165, 61);
+    }
+  }
+  .delete {
+    background-color: rgb(175, 18, 18);
+    &:hover {
+      background-color: rgb(205, 34, 34);
+    }
+  }
+  
+}
+
+li {
+  margin: 30px;
+  width: 4%;
+  list-style: none;
+  border-bottom: 1px solid black;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<li routerLink="">Back</li>
+<div *ngFor="let movie of myMovies$ | async">
+  <ul>
+    <li>
+      <h2  *ngIf="!edit" >Movie name is: {{ movie.name }}</h2>
+
+      <p *ngIf="!edit" >Countries: {{ movie.contry }}</p>
+      <textarea *ngIf="edit" #country>{{ movie.contry }} </textarea><br>
+
+      <textarea *ngIf="edit" #name>{{ movie.name }} </textarea><br>
+      <p *ngIf="!edit">Show will be at: {{ movie.place }}</p>
+
+      <textarea *ngIf="edit" #place>{{ movie.place }} </textarea><br>
+      <p  *ngIf="!edit">Movie type is: {{ movie.type }}</p>
+      <textarea *ngIf="edit"  #type> {{ movie.type }}</textarea><br>
+      <p   *ngIf="movie.minutes">Movie minuts: {{ movie.minutes }}</p>
+      <p  *ngIf="movie.series">Serial series: {{ movie.series }}</p>
+     
+      <p  *ngIf="!edit">It will come: {{ movie.date }} </p>
+      <textarea *ngIf="edit" #date>{{ movie.date }} </textarea><br>
+
+      <p  *ngIf="!edit">Genre: {{ movie.genres }} </p>
+      <textarea *ngIf="edit" #genre>{{ movie.genres }} </textarea><br>
+
+      <p  *ngIf="!edit">Your Rate: {{ movie.rate }}</p>
+      <textarea *ngIf="edit" #rate> {{ movie.rate }}</textarea><br>
+
+
+      
+      <button class="edit" (click)="editButton()"  *ngIf="!edit">Edit</button>
+      <button class="edit"  *ngIf="edit" (click)="finnalyEdit(movie.id)">Edit</button>
+      <button class="delete" (click)="deleteMovie(movie.id)"  *ngIf="!edit">Delete</button>
+      <button class="edit"  *ngIf="edit" (click)="cancelEdit()">Cancel</button>
+    </li>
+  </ul>
+</div>

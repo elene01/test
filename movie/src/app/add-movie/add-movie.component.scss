@@ -1,0 +1,82 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(53, 126, 137);
+  width: 50%;
+  min-height: 600px;
+  height: auto;
+  margin-top: 4%;
+  border-radius: 8px;
+  align-items: center;
+  font-size: 24px;
+  color: white;
+
+  input[type='text'] {
+    height: 35px;
+    width: 80%;
+    border-radius: 5px;
+  }
+
+  .genre {
+    display: flex;
+    background-color: rgb(56, 105, 113);
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    border-radius: 8px;
+  }
+
+  #date {
+    width: 110%;
+    margin-left: -5%;
+    border-radius: 5px;
+  }
+  select {
+    height: 35px;
+    width: 90%;
+    border-radius: 5px;
+  }
+}
+h1 {
+  color: white;
+  font-size: 44px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 20%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+ngb-rating {
+    font-size: 30px;
+    color: yellow;
+    margin-top: -15px;
+  }
+  button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: rgb(57, 180, 173);
+    border: none;
+    color: white;
+    &:hover {
+        background-color: rgb(73, 193, 187);
+    }
+  }
+  li {
+    margin: 30px;
+    width: 4.2%;
+    list-style: none;
+    border-bottom: 1px solid black;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
